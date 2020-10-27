@@ -1,0 +1,183 @@
+<html>
+<head>
+  <title>ADVDISC</title>
+  <style>
+  @font-face {
+    font-family: 'titillium_bold';
+    src: url('titillium-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'mplus_2p_black';
+    src: url('mplus-2p-black.woff') format('woff');
+    /* if possible find a way to subset the font to
+       hirigana and katakana characters only */
+    font-weight: normal;
+    font-style: normal;
+  }
+  body {
+    background: #202023;
+    margin: 0;
+  }
+  #matrigram {
+    font-family: 'titillium_bold';
+    color: #2a9e45;
+    font: 28px 'titillium_bold';
+    margin: 10px 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+  input {
+    -webkit-appearance: none;
+    display: block;
+    margin: 1px;
+    width: 50px;
+    height: 30px;
+    border: solid 1px #171719;
+    background: #323235;
+    color: #cccccc;
+    text-align: center;
+    float: left;
+    font: 16px 'titillium_bold';
+    border-radius: 0px;
+  }
+  button {
+    -webkit-appearance: none;
+    margin: 10px 1px;
+    width: 154px;
+    height: 30px;
+    border: solid 1px #171719;
+    background: linear-gradient(to bottom, #353637, #272829);
+    color: #cccccc;
+    text-align: center;
+    font: 16px 'titillium_bold';
+    cursor: pointer;
+    padding-bottom: 2px;
+    border-radius: 2px;
+  }
+  #selection {
+    -webkit-appearance: none;
+    width: 154px;
+    height: 30px;
+    border: 0;
+    background: transparent;
+    color: #cccccc;
+    text-align: left;
+    font: 16px 'titillium_bold';
+    cursor: pointer;
+    padding: 2px;
+    -moz-appearance: none;
+  }
+  #container {
+    margin: 10px 1px;
+    width: 154px;
+    height: 30px;
+    border: solid 1px #171719;
+    background: linear-gradient(to bottom, #353637, #272829);
+    color: #cccccc;
+    text-align: left;
+    font: 16px 'titillium_bold';
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+  }
+  #matrix {
+    overflow: hidden;
+  }
+  #sidebar {
+    text-align: center;
+    width: 156px;
+    padding: 20px;
+    height: 100%;
+    border-right: solid 4px #252729;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  #content {
+    position: relative;
+    height: 100%;
+    margin-left: 200px;
+    overflow: auto;
+  }
+  #dropzone {
+    margin: auto;
+    text-align: center;
+    width: 85%;
+    height: 85%;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: dashed 4px #888888;
+    border-radius: 10px;
+    font: 32px 'titillium_bold';
+    color: #cccccc;
+    padding: 20px;
+  }
+  #canvas {
+    margin: auto;
+    text-align: center;
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+  #container:before {
+      content:'';
+      right:2px; top:0px;
+      width:20px; height:30px;
+      background: linear-gradient(to bottom, #353637, #272829);
+      position:absolute;
+      pointer-events:none;
+      display:block;
+  }
+  #arrow {
+    position: absolute;
+    top: 0; bottom: 0; 
+    right: 8px; left: auto;
+    margin: auto;
+    width: 0; 
+    height: 0; 
+    border-top: 7px solid #cccccc;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    pointer-events: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h1 id="matrigram">MATRIGRAM</h1>
+    <div id="container">
+      <select id="selection">
+        <option value="custom">CUSTOM</option>
+      </select>
+      <div id="arrow"></div>
+    </div>    
+    <div id="matrix">
+      <input id="_0" type="text" value="0" autocomplete="off">
+      <input id="_1" type="text" value="1" autocomplete="off">
+      <input id="_2" type="text" value="0" autocomplete="off">
+      <input id="_3" type="text" value="1" autocomplete="off">
+      <input id="_4" type="text" value="1" autocomplete="off">
+      <input id="_5" type="text" value="1" autocomplete="off">
+      <input id="_6" type="text" value="0" autocomplete="off">
+      <input id="_7" type="text" value="1" autocomplete="off">
+      <input id="_8" type="text" value="0" autocomplete="off">
+    </div>
+    <button onclick="apply()">FILTER AWAY!</button>
+    <button onclick="reset()">CLEAR FILTERS</button>
+  </div>
+  <div id="content">
+    <div id="dropzone">
+      DROP YOUR IMAGE HERE!
+      <br/>
+      <button id="picker">OR PICK ONE</button>
+    </div>
+    <canvas id="canvas"> </canvas>
+  </div>
+  <script src="filter.js"></script>
+</body>
+</html>
