@@ -1,0 +1,147 @@
+@font-face {
+  font-family: titillium;
+  src: url('titillium-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body, input, select, button {
+  font-family: titillium, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+body {
+  margin: 0;
+  background: #202023;
+}
+
+#matrigram {
+  margin: 10px 0;
+  color: #2a9e45;
+  font-size: 28px;
+}
+
+input {
+  -webkit-appearance: none;
+  display: block;
+  margin: 1px;
+  width: 50px;
+  height: 30px;
+  border: solid 1px #171719;
+  background: #323235;
+  color: #cccccc;
+  text-align: center;
+  float: left;
+  font-size: 16px;
+  border-radius: 0px;
+}
+
+button {
+  -webkit-appearance: none;
+  margin: 10px 1px;
+  width: 154px;
+  height: 30px;
+  border: solid 1px #171719;
+  background: linear-gradient(to bottom, #353637, #272829);
+  color: #cccccc;
+  text-align: center;
+  font-size: 16px;
+  padding-bottom: 2px;
+  border-radius: 2px;
+}
+
+#selection {
+  -webkit-appearance: none;
+  width: 154px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: #cccccc;
+  text-align: left;
+  font-size: 16px;
+  padding: 2px;
+  -moz-appearance: none;
+}
+
+#container {
+  margin: 10px 1px;
+  width: 154px;
+  height: 30px;
+  border: solid 1px #171719;
+  background: linear-gradient(to bottom, #353637, #272829);
+  color: #cccccc;
+  text-align: left;
+  font-size: 16px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2px;
+}
+
+#matrix {
+  overflow: hidden;
+}
+
+#sidebar {
+  text-align: center;
+  width: 156px;
+  padding: 20px;
+  height: 100%;
+  border-right: solid 4px #252729;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#content {
+  position: relative;
+  height: 100%;
+  margin-left: 200px;
+  overflow: auto;
+}
+
+#dropzone {
+  margin: auto;
+  text-align: center;
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  border: dashed 4px #888888;
+  border-radius: 10px;
+  font-size: 32px;
+  color: #cccccc;
+  padding: 20px;
+}
+
+#canvas {
+  margin: auto;
+  text-align: center;
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#container:before {
+  content:'';
+  right:2px; top:0px;
+  width:20px; height:30px;
+  background: linear-gradient(to bottom, #353637, #272829);
+  position:absolute;
+  pointer-events:none;
+  display:block;
+}
+
+#arrow {
+  position: absolute;
+  top: 0; bottom: 0;
+  right: 8px; left: auto;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #cccccc;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  pointer-events: none;
+}

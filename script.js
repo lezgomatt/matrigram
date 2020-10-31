@@ -1,14 +1,6 @@
 /****************************************
   M A T R I G R A M
-  
-  an S19 ADVDISC project
-  [INSERT LONG DESCRIPTION HERE]
-  
-  AUTHORS:
-    Cua, Sean Felix
-    Go, Matthew Allen
-    Soriano, Juan Miguel
-  
+
   TABLE OF CONTENTS:
     Globals ....................... [GB]
     Apply & Reset ................. [AR]
@@ -17,23 +9,22 @@
     Image Loading ................. [IL]
     Filter Selection  ............. [FS]
     Filters ....................... [FT]
-    
+
  ****************************************/
- 
- 
+
 function filter(canvas, matrix) {
   var width = canvas.width;
   var height = canvas.height;
   var context = canvas.getContext('2d');
-  
+
   var oldPixels = context.getImageData(0, 0, width, height).data;
   var result = context.createImageData(width, height);
   var newPixels = result.data;
-  
+
   // matrix is assumed to be square
   var size = matrix[0].length;
   var half = (size-1)/2;
-  
+
   for(var y = 0; y < height; y++)
   for(var x = 0; x < width; x++) {
     var i1 = 4 * (width * y + x);
@@ -42,9 +33,9 @@ function filter(canvas, matrix) {
     for(var i = 0; i < size; i++) {
       var m = x - half + i;
       var n = y - half + j;
-      if(m < 0) m = 0; 
+      if(m < 0) m = 0;
       else if(m >= width) m = width-1;
-      if(n < 0) n = 0; 
+      if(n < 0) n = 0;
       else if(n >= height) n = height-1;
       var i2 = 4 * (width * n + m);
       var multiplier = matrix[i][j];
@@ -74,7 +65,6 @@ var inputs = [];
 for(var i = 0; i < 9; i++) {
   inputs[i] = document.getElementById("_"+i);
 }
-
 
 /****************************************
   APPLY & RESET                     [AR]
@@ -150,7 +140,7 @@ function stopDefault(event) {
 
 var picker = document.getElementById('picker');
 picker.onclick = function() { fBrowse.click(); };
- 
+
 var fBrowse = document.createElement('input');
 fBrowse.type = 'file';
 fBrowse.accept = 'image/*';
@@ -186,7 +176,6 @@ fReader.onload = function (event) {
   };
 };
 
-
 /****************************************
   FILTER SELECTION                  [FS]
  ****************************************/
@@ -211,43 +200,35 @@ inputs.forEach(function(input) {
 
 function addFilter(name, matrix) {
  var flattened = matrix.reduce(function(a, b) { return a.concat(b);} );
- selection.options.add(new Option(name.toUpperCase(), flattened.join(",")), selection.length-1);
+ selection.options.add(new Option(name, flattened.join(",")), selection.length-1);
 }
 
 /****************************************
   FILTERS                           [FT]
  ****************************************/
 
-addFilter('blur',
+addFilter('Blur',
   [ [0, 1, 0] ,
     [1, 1, 1] ,
     [0, 1, 0] ]
 );
 
-addFilter('sharpen',
+addFilter('Sharpen',
   [ [-0.5, -1, -0.5] ,
     [  -1,  7,   -1] ,
     [-0.5, -1, -0.5] ]
 );
 
-addFilter('edge dection',
+addFilter('Edge Dection',
   [ [ 0, -1,  0] ,
     [-1,  5, -1] ,
     [ 0, -1,  0] ]
 );
 
-addFilter('surprise',
+addFilter('Surprise',
   [ [0.5,  1, 0.5] ,
     [  1, -5,   1] ,
     [0.5,  1, 0.5] ]
 );
 
 selection.selectedIndex = 0;
-
-// TODO:
-// no script and compatibility checking!!
-// adding fallbacks on styles?
-// use web workers! :-)
-// implement the rain
-// offsets? allowing non-normalized filters?
-// random filters? multiple random applications. hm. sobel filters?

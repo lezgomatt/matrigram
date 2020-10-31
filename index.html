@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MATRIGRAM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="sidebar">
+    <h1 id="matrigram">MATRIGRAM</h1>
+    <div id="container">
+      <select id="selection">
+        <option value="custom">Custom</option>
+      </select>
+      <div id="arrow"></div>
+    </div>
+    <div id="matrix">
+      <input id="_0" type="text" value="0" autocomplete="off">
+      <input id="_1" type="text" value="1" autocomplete="off">
+      <input id="_2" type="text" value="0" autocomplete="off">
+      <input id="_3" type="text" value="1" autocomplete="off">
+      <input id="_4" type="text" value="1" autocomplete="off">
+      <input id="_5" type="text" value="1" autocomplete="off">
+      <input id="_6" type="text" value="0" autocomplete="off">
+      <input id="_7" type="text" value="1" autocomplete="off">
+      <input id="_8" type="text" value="0" autocomplete="off">
+    </div>
+    <button onclick="apply()">Filter Away!</button>
+    <button onclick="reset()">Clear Filters</button>
+  </div>
+  <div id="content">
+    <div id="dropzone">
+      Drop Your Image Here
+      <br/>
+      <button id="picker">Or Pick One</button>
+    </div>
+    <canvas id="canvas"> </canvas>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
