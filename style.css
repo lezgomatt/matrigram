@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*, *:before, *:after { box-sizing: inherit; }
+
 body, input, select, button {
   font-family: titillium, sans-serif;
   font-weight: bold;
@@ -12,8 +19,42 @@ body, input, select, button {
 }
 
 body {
+  display: flex;
+  align-items: stretch;
+  min-height: 100%;
   margin: 0;
   background: #202023;
+}
+
+#sidebar {
+  text-align: center;
+  width: 200px;
+  padding: 20px;
+  border-right: solid 4px #252729;
+}
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+#dropzone {
+  align-self: stretch;
+  width: 100%;
+  margin: 40px;
+  padding: 20px;
+  border: dashed 4px #888888;
+  border-radius: 10px;
+  color: #cccccc;
+  font-size: 32px;
+  text-align: center;
+}
+
+#canvas {
+  max-width: 100%;
+  height: auto;
 }
 
 #matrigram {
@@ -25,121 +66,76 @@ body {
 input {
   -webkit-appearance: none;
   display: block;
-  margin: 1px;
+  float: left;
   width: 50px;
   height: 30px;
+  margin: 1px;
   border: solid 1px #171719;
+  border-radius: 0px;
   background: #323235;
   color: #cccccc;
-  text-align: center;
-  float: left;
   font-size: 16px;
-  border-radius: 0px;
+  text-align: center;
 }
 
 button {
   -webkit-appearance: none;
-  margin: 10px 1px;
   width: 154px;
   height: 30px;
+  margin: 10px 1px;
+  padding-bottom: 2px;
   border: solid 1px #171719;
+  border-radius: 2px;
   background: linear-gradient(to bottom, #353637, #272829);
   color: #cccccc;
-  text-align: center;
   font-size: 16px;
-  padding-bottom: 2px;
-  border-radius: 2px;
+  text-align: center;
 }
 
 #selection {
   -webkit-appearance: none;
+  -moz-appearance: none;
   width: 154px;
   height: 30px;
+  padding: 2px;
   border: 0;
   background: transparent;
   color: #cccccc;
-  text-align: left;
   font-size: 16px;
-  padding: 2px;
-  -moz-appearance: none;
+  text-align: left;
 }
 
-#container {
-  margin: 10px 1px;
+.select-container {
+  position: relative;
   width: 154px;
   height: 30px;
+  margin: 10px 1px;
   border: solid 1px #171719;
+  border-radius: 2px;
+  overflow: hidden;
   background: linear-gradient(to bottom, #353637, #272829);
   color: #cccccc;
-  text-align: left;
   font-size: 16px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 2px;
+  text-align: left;
 }
 
-#matrix {
-  overflow: hidden;
-}
-
-#sidebar {
-  text-align: center;
-  width: 156px;
-  padding: 20px;
-  height: 100%;
-  border-right: solid 4px #252729;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-#content {
-  position: relative;
-  height: 100%;
-  margin-left: 200px;
-  overflow: auto;
-}
-
-#dropzone {
-  margin: auto;
-  text-align: center;
-  width: 85%;
-  height: 85%;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  border: dashed 4px #888888;
-  border-radius: 10px;
-  font-size: 32px;
-  color: #cccccc;
-  padding: 20px;
-}
-
-#canvas {
-  margin: auto;
-  text-align: center;
-  max-width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-}
-
-#container:before {
+.select-container:before {
   content:'';
+  display:block;
+  position:absolute;
   right:2px; top:0px;
   width:20px; height:30px;
   background: linear-gradient(to bottom, #353637, #272829);
-  position:absolute;
   pointer-events:none;
-  display:block;
 }
 
-#arrow {
+.select-arrow {
   position: absolute;
   top: 0; bottom: 0;
   right: 8px; left: auto;
-  margin: auto;
   width: 0;
   height: 0;
+  margin: auto;
   border-top: 7px solid #cccccc;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;

@@ -116,9 +116,9 @@ function reset() {
   DRAG & DROP                       [DD]
  ****************************************/
 
-var conent = document.getElementById('content');
-content.ondragenter = content.ondragover = stopDefault;
-content.ondrop = function(event) {
+var main = document.getElementById('main');
+main.ondragenter = main.ondragover = stopDefault;
+main.ondrop = function(event) {
   stopDefault(event);
   if(event.dataTransfer.files.length > 1) {
     alert('One file at a time please!');
@@ -172,6 +172,7 @@ fReader.onload = function (event) {
     context.drawImage(img, 0, 0, canvas.width, canvas.height);
     original = context.getImageData(0, 0, canvas.width, canvas.height);
     document.getElementById('dropzone').style.display = 'none';
+    document.getElementById('canvas').style.display = '';
     empty = false;
   };
 };
