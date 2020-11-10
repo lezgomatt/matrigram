@@ -6,35 +6,36 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="sidebar">
-    <h1 id="matrigram">MATRIGRAM</h1>
-    <div class="select-container">
+  <div class="sidebar">
+    <h1 class="sidebar-logo">MATRIGRAM</h1>
+    <div class="dark-select">
       <select id="selection">
         <option value="custom">Custom</option>
       </select>
-      <div class="select-arrow"></div>
+      <div class="dark-select-arrow"></div>
     </div>
     <div id="matrix">
-      <input id="_0" type="text" value="0" autocomplete="off">
-      <input id="_1" type="text" value="1" autocomplete="off">
-      <input id="_2" type="text" value="0" autocomplete="off">
-      <input id="_3" type="text" value="1" autocomplete="off">
-      <input id="_4" type="text" value="1" autocomplete="off">
-      <input id="_5" type="text" value="1" autocomplete="off">
-      <input id="_6" type="text" value="0" autocomplete="off">
-      <input id="_7" type="text" value="1" autocomplete="off">
-      <input id="_8" type="text" value="0" autocomplete="off">
+      <input id="r1c1" type="text" value="0" autocomplete="off">
+      <input id="r1c2" type="text" value="1" autocomplete="off">
+      <input id="r1c3" type="text" value="0" autocomplete="off">
+      <input id="r2c1" type="text" value="1" autocomplete="off">
+      <input id="r2c2" type="text" value="1" autocomplete="off">
+      <input id="r2c3" type="text" value="1" autocomplete="off">
+      <input id="r3c1" type="text" value="0" autocomplete="off">
+      <input id="r3c2" type="text" value="1" autocomplete="off">
+      <input id="r3c3" type="text" value="0" autocomplete="off">
     </div>
-    <button onclick="apply()">Filter Away!</button>
-    <button onclick="reset()">Clear Filters</button>
+    <button onclick="applyFilter()">Filter Away!</button>
+    <button onclick="resetImage()">Clear Filters</button>
   </div>
-  <div id="main">
+  <div class="main">
     <div id="dropzone">
-      Drop Your Image Here
-      <br/>
-      <button id="picker">Or Pick One</button>
+      <div id="drop-instructions">
+        Drop Your Image Here
+        <button id="image-picker">Or Pick One</button>
+      </div>
     </div>
-    <canvas id="canvas" width="0" height="0" style="display: none;"> </canvas>
+    <canvas id="preview-canvas" width="0" height="0" style="display: none;"></canvas>
   </div>
   <script src="script.js"></script>
 </body>
